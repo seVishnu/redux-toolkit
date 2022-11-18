@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from './redux/apiCalls';
-import { remove, update } from './redux/features/userSlice';
+import { remove, update, updateUserThunk } from './redux/features/userSlice';
 
 const Template = () => {
     const [name, setName] = useState('');
@@ -11,7 +11,7 @@ const Template = () => {
 
     const clickHandler = (e) => {
       e.preventDefault();
-      updateUser({name, email}, dispatch)
+      dispatch(updateUserThunk({name, email}));
       setName('');
       setEmail('');
     }
